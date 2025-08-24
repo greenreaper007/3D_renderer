@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 06:38:21 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/24 07:40:37 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/24 09:41:56 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ void add_vertex_data(t_vertex *vertex, char *line)
 		i++;
 	while (line[i] == ' ')
 		i++;
-	vertex->z = atof(&line[i]);
+	vertex->y = atof(&line[i]);
 	while (line[i] && line[i] != ' ')
 		i++;
 	while (line[i] == ' ')
 		i++;
-	vertex->y = atof(&line[i]);
+	vertex->z = atof(&line[i]);
 }
 
 void add_vertex(t_render *render)
