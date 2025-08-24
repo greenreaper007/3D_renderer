@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 04:42:40 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/24 07:53:15 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/24 08:54:01 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ typedef struct s_vertex
 
 typedef struct s_face
 {
-	t_vertex *first;
-	t_vertex *second;
-	t_vertex *third;
+	t_vertex	**vertex;
+	int			vertex_count;
 	
 } t_face;
 

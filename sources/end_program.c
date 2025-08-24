@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 04:52:27 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/24 06:57:22 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/24 09:21:28 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@ void free_tab(char **tab)
 		i++;
 	}
 	free(tab);
+}
+
+void free_face(t_render *render)
+{
+	int i = 0;
+	while (render->object.face[i].vertex)
+	{
+		free(render->object.face[i].vertex);
+		i++;
+	}
+	free(render->object.face);
 }
 
 void free_all(t_render *render)
@@ -54,7 +65,7 @@ void free_all(t_render *render)
 	}
 	if (render->object.face)
 	{
-		free(render->object.face);
+		free_face(render);
 	}
 
 
@@ -69,7 +80,8 @@ void end_program(int error_code, char *message, t_render *render)
 	}
 	else
 	{
-		write(2, message, ft_strlen(message));
+		if (message[0])
+			write(2, message, ft_strlen(message));
 		write(2, "\n", 1);
 	}
 	free_all(render);
