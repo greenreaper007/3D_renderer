@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"scop.h": "c",
+		"libft.h": "c",
+		"algorithm": "c"
+	}
+}

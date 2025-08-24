@@ -1,0 +1,95 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scop.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/24 04:42:40 by flturbou          #+#    #+#             */
+/*   Updated: 2025/08/24 07:53:15 by flturbou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SCOP_H
+# define SCOP_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <math.h>
+#include <X11/keysym.h>
+#include <X11/X.h>
+#include <fcntl.h>
+#include <time.h>
+#include <sys/time.h>
+#include "../MyLibft/libft.h"
+#include "../minilibx-linux/mlx.h"
+
+/* Graphic Data */
+#define WINDOW_LENGTH 1000
+#define WINDOW_HEIGHT 1000
+
+/* Error code Data */
+#define SUCCESS 0
+#define ARGUMENT_ERROR 1
+#define MALLOC_ERROR 2
+#define MLX_ERROR 3
+#define OBJECT_FILE_ERROR 4
+#define RENDER_ERROR 5
+
+typedef struct s_vertex
+{
+	double x;
+	double y;
+	double z;
+	
+} t_vertex;
+
+typedef struct s_face
+{
+	t_vertex *first;
+	t_vertex *second;
+	t_vertex *third;
+	
+} t_face;
+
+typedef struct s_object
+{
+	char		**raw;
+	char		*name;
+	t_vertex	*vertex;
+	int			vertex_count;
+	t_face		*face;
+	int			face_count;
+
+} t_object;
+
+typedef struct s_render
+{
+	void		*mlx;
+	void		*win;
+	void		*frame_image;
+	void		*frame_data;
+	t_object	object;
+
+} t_render;
+
+/* end_program.c */
+void end_program(int error_code, char *message, t_render *render);
+
+/* initialise_values.c */
+void initialise_values(t_render *render);
+
+/* parse_object.c */
+void parse_object(t_render *render, char *file_path);
+
+/* parse_vertex.c */
+void get_object_vertex(t_render *render);
+
+/* parse_face.c */
+void get_object_face(t_render *render);
+
+/* copy_file.c */
+void copy_file(t_render *render, char *file_path);
+
+#endif
