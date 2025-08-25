@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 04:42:40 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/24 08:54:01 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/25 01:33:30 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@
 
 typedef struct s_vertex
 {
-	double x;
-	double y;
-	double z;
+	float x;
+	float y;
+	float z;
 	
 } t_vertex;
 
@@ -90,5 +90,8 @@ void get_object_face(t_render *render);
 
 /* copy_file.c */
 void copy_file(t_render *render, char *file_path);
+
+/* atof_fast.c */
+float atof_fast(const char *s);
 
 #endif

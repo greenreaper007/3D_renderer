@@ -6,7 +6,7 @@
 #    By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:30:13 by flturbou          #+#    #+#              #
-#    Updated: 2025/08/24 07:53:34 by flturbou         ###   ########.fr        #
+#    Updated: 2025/08/25 01:33:08 by flturbou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ MLX_EX		=	$(MLX_LIB) $(MLX_FLAG)
 
 C_FILE		=	main.c end_program.c \
 				initialise_values.c copy_file.c \
-				parse_object.c parse_vertex.c parse_face.c
+				parse_object.c parse_vertex.c parse_face.c \
+				atof_fast.c
 
 SRC_DIR		=	./sources/
 
