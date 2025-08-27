@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 04:42:40 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/27 16:39:52 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/27 18:10:30 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,17 @@
 #define GLFW_ERROR 3
 #define OBJECT_FILE_ERROR 4
 #define RENDER_ERROR 5
+
+typedef struct s_key_state
+{
+	char is_uparrow;
+	char is_downarrow;
+	char is_leftarrow;
+	char is_rightarrow;
+	char is_zoomin;
+	char is_zoomout;
+	
+} t_key_state;
 
 typedef struct s_vertex
 {
@@ -74,6 +85,7 @@ typedef struct s_render
 	long		time_before_frame;
 	long		time_after_frame;
 	int			frame_count;
+	t_key_state key;
 	t_object	object;
 
 } t_render;
@@ -88,6 +100,7 @@ void create_window(t_render * render);
 void display_frame(t_render *render);
 
 /* keyboard_input.c */
+void do_keyboard_input(t_render *render);
 void keyboard_input(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 /* initialise_values.c */

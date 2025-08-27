@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 08:09:43 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/27 17:01:18 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/27 17:59:57 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void create_window(t_render *render)
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	//glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LESS);
+	//glDepthFunc(GL_LESS);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 }
