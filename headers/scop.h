@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 04:42:40 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/27 10:37:03 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/27 16:39:52 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 /* Graphic Data */
 #define WINDOW_LENGTH 750
 #define WINDOW_HEIGHT 750
+#define ZOOM 0.1f
 
 #define SECOND 1000000
 
@@ -38,8 +39,6 @@
 #define GLFW_ERROR 3
 #define OBJECT_FILE_ERROR 4
 #define RENDER_ERROR 5
-
-typedef float mat4[16];
 
 typedef struct s_vertex
 {
@@ -71,6 +70,7 @@ typedef struct s_render
 {
 	GLFWwindow* window;
 	int			glfw;
+	float		scale;
 	long		time_before_frame;
 	long		time_after_frame;
 	int			frame_count;
@@ -86,6 +86,9 @@ void create_window(t_render * render);
 
 /* display_frame.c */
 void display_frame(t_render *render);
+
+/* keyboard_input.c */
+void keyboard_input(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 /* initialise_values.c */
 void initialise_values(t_render *render);

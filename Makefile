@@ -6,7 +6,7 @@
 #    By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:30:13 by flturbou          #+#    #+#              #
-#    Updated: 2025/08/27 10:36:17 by flturbou         ###   ########.fr        #
+#    Updated: 2025/08/27 15:58:18 by flturbou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ LIBFT_LIB	=	$(addprefix $(LIBFT_PATH), $(LIBFT_FILE))
 
 C_FILE		=	main.c end_program.c \
 				create_window.c display_frame.c \
+				keyboard_input.c \
 				initialise_values.c copy_file.c print_data.c \
 				parse_object.c parse_vertex.c parse_face.c \
 				atof_fast.c get_time.c
