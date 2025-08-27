@@ -6,7 +6,7 @@
 #    By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:30:13 by flturbou          #+#    #+#              #
-#    Updated: 2025/08/25 01:33:08 by flturbou         ###   ########.fr        #
+#    Updated: 2025/08/27 10:36:17 by flturbou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME		=	Render_object
 
 CC			=	cc
 
-FLAG		=	-Wall -Wextra -Werror 
+FLAG		=	-Wall -Wextra -Werror
+
+GLFW_FLAG	=	-lglfw -lGL -lm -ldl
 
 LIBFT_PATH	=	./MyLibft/
 
@@ -24,18 +26,11 @@ MLX_FILE	=	libmlx.a
 
 LIBFT_LIB	=	$(addprefix $(LIBFT_PATH), $(LIBFT_FILE))
 
-MLX_FLAG	=	-lX11 -lXext
-
-MLX_PATH	=	./minilibx-linux/
-
-MLX_LIB		=	$(addprefix $(MLX_PATH), $(MLX_FILE))
-
-MLX_EX		=	$(MLX_LIB) $(MLX_FLAG)
-
 C_FILE		=	main.c end_program.c \
-				initialise_values.c copy_file.c \
+				create_window.c display_frame.c \
+				initialise_values.c copy_file.c print_data.c \
 				parse_object.c parse_vertex.c parse_face.c \
-				atof_fast.c
+				atof_fast.c get_time.c
 
 SRC_DIR		=	./sources/
 
@@ -52,20 +47,15 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 
 all: $(NAME)
 
-$(NAME): $(LIBFT_LIB) $(MLX_LIB) $(OBJ)
+$(NAME): $(LIBFT_LIB) $(OBJ)
 	@echo "\033[0;33m\nCOMPILING Render_object...\n"
-	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -o $(NAME) -lm
+	$(CC) $(OBJ) $(LIBFT_LIB) $(GLFW_FLAG) -o $(NAME) -lm
 	@echo "\033[1;32m./Render_object created\n"
 
 $(LIBFT_LIB):
 	@make -C $(LIBFT_PATH)
 
-$(MLX_LIB):
-	@make -C $(MLX_PATH)
-
 clean:
-	@echo "\033[0;31mDeleting Obj file in $(MLX_PATH)...\n"
-	@make clean -sC $(MLX_PATH)
 	@echo "\033[0;31mDeleting Obj file in $(LIBFT_PATH)...\n"
 	@make clean -sC $(LIBFT_PATH)
 	@echo "\033[1;32mDone\n"

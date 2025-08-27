@@ -2,6 +2,8 @@
 	"files.associations": {
 		"scop.h": "c",
 		"libft.h": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"gl.h": "c",
+		"time.h": "c"
 	}
 }

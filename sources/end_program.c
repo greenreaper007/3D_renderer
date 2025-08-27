@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 04:52:27 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/24 09:21:28 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/27 09:01:54 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,9 @@ void free_all(t_render *render)
 {
 	if (!render)
 		return ;
-	if (render->frame_image)
+	if (render->glfw)
 	{
-		mlx_destroy_image(render->mlx, render->frame_image);
-	}
-	if (render->win)
-	{
-		mlx_destroy_window(render->mlx, render->win);
-	}
-	if (render->mlx)
-	{
-		mlx_destroy_display(render->mlx);
-		free(render->mlx);
+		glfwTerminate();
 	}
 	if (render->object.raw)
 	{

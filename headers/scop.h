@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 04:42:40 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/25 01:33:30 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:37:03 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,24 @@
 #include <fcntl.h>
 #include <time.h>
 #include <sys/time.h>
+#include <GLFW/glfw3.h>
 #include "../MyLibft/libft.h"
-#include "../minilibx-linux/mlx.h"
 
 /* Graphic Data */
-#define WINDOW_LENGTH 1000
-#define WINDOW_HEIGHT 1000
+#define WINDOW_LENGTH 750
+#define WINDOW_HEIGHT 750
+
+#define SECOND 1000000
 
 /* Error code Data */
 #define SUCCESS 0
 #define ARGUMENT_ERROR 1
 #define MALLOC_ERROR 2
-#define MLX_ERROR 3
+#define GLFW_ERROR 3
 #define OBJECT_FILE_ERROR 4
 #define RENDER_ERROR 5
+
+typedef float mat4[16];
 
 typedef struct s_vertex
 {
@@ -65,16 +69,23 @@ typedef struct s_object
 
 typedef struct s_render
 {
-	void		*mlx;
-	void		*win;
-	void		*frame_image;
-	void		*frame_data;
+	GLFWwindow* window;
+	int			glfw;
+	long		time_before_frame;
+	long		time_after_frame;
+	int			frame_count;
 	t_object	object;
 
 } t_render;
 
 /* end_program.c */
 void end_program(int error_code, char *message, t_render *render);
+
+/* create_window.c */
+void create_window(t_render * render);
+
+/* display_frame.c */
+void display_frame(t_render *render);
 
 /* initialise_values.c */
 void initialise_values(t_render *render);
@@ -90,6 +101,12 @@ void get_object_face(t_render *render);
 
 /* copy_file.c */
 void copy_file(t_render *render, char *file_path);
+
+/* print_data.c */
+void print_data(t_render *render);
+
+/* get_time.c */
+long get_time(void);
 
 /* atof_fast.c */
 float atof_fast(const char *s);

@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 06:38:21 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/25 01:34:16 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:18:35 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int verify_vertex(char *vertex)
 			return (0);
 		j++;
 	}
-	if (vertex[i])
+	if (vertex[i] != ' ' && vertex[i])
 		return (0);
 	return (1);
 }
@@ -54,22 +54,24 @@ int count_vertex(t_render *render)
 	return (count);
 }
 
+#define ZOOM 7.0
+
 void add_vertex_data(t_vertex *vertex, char *line)
 {
 	int i = 0;
 	while (line[i] == ' ')
 		i++;
-	vertex->x = atof_fast(&line[i]);
+	vertex->x = atof_fast(&line[i]) / ZOOM;
 	while (line[i] && line[i] != ' ')
 		i++;
 	while (line[i] == ' ')
 		i++;
-	vertex->y = atof_fast(&line[i]);
+	vertex->y = atof_fast(&line[i]) / ZOOM;
 	while (line[i] && line[i] != ' ')
 		i++;
 	while (line[i] == ' ')
 		i++;
-	vertex->z = atof_fast(&line[i]);
+	vertex->z = atof_fast(&line[i]) / ZOOM;
 }
 
 void add_vertex(t_render *render)

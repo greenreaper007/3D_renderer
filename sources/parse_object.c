@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 05:35:56 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/24 07:53:58 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/26 08:01:49 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void parse_object(t_render *render, char *file_path)
 {
 	copy_file(render, file_path);
 	get_object_name(render);
+	printf("Getting %s file vertexes\n", render->object.name);
 	get_object_vertex(render);
+	printf("Getting %s file faces\n", render->object.name);
 	get_object_face(render);
+	printf("Parsing for %s file completed\n", render->object.name);
 }

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialise_values.c                                :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 05:17:21 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/27 10:35:19 by flturbou         ###   ########.fr       */
+/*   Created: 2025/08/27 10:35:36 by flturbou          #+#    #+#             */
+/*   Updated: 2025/08/27 10:36:34 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/scop.h"
 
-void initialise_values(t_render *render)
+long get_time(void)
 {
-	render->glfw = 0;
-	render->window = NULL;
-	render->time_before_frame = 0;
-	render->time_after_frame = 0;
-	render->frame_count = 0;
-	render->object.raw = NULL;
-	render->object.name = NULL;
-	render->object.vertex = NULL;
-	render->object.face = NULL;
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * SECOND + time.tv_usec);
 }
