@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 08:30:10 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/27 17:38:40 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/28 18:17:12 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ void do_keyboard_input(t_render *render)
 		render->scale *= 1.1f;
 	if (render->key.is_zoomout)
 		render->scale *= 0.9f;
+	
+	if (render->key.is_angleyup)
+		render->angle.y++;
+	if (render->key.is_angleydown)
+		render->angle.y--;
+	if (render->key.is_anglexup)
+		render->angle.x++;
+	if (render->key.is_anglexdown)
+		render->angle.x--;
+	if (render->key.is_anglezup)
+		render->angle.z++;
+	if (render->key.is_anglezdown)
+		render->angle.z--;
 }
 
 void keyboard_input(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -56,6 +69,24 @@ void keyboard_input(GLFWwindow* window, int key, int scancode, int action, int m
 			return ;
 		case GLFW_KEY_KP_SUBTRACT:
 			render->key.is_zoomout = !render->key.is_zoomout;
+			return ;
+		case GLFW_KEY_KP_4:
+			render->key.is_angleyup = !render->key.is_angleyup;
+			return ;
+		case GLFW_KEY_KP_6:
+			render->key.is_angleydown = !render->key.is_angleydown;
+			return ;
+		case GLFW_KEY_KP_8:
+			render->key.is_anglexup = !render->key.is_anglexup;
+			return ;
+		case GLFW_KEY_KP_2:
+			render->key.is_anglexdown = !render->key.is_anglexdown;
+			return ;
+		case GLFW_KEY_KP_7:
+			render->key.is_anglezup = !render->key.is_anglezup;
+			return ;
+		case GLFW_KEY_KP_9:
+			render->key.is_anglezdown = !render->key.is_anglezdown;
 			return ;
 		
 		default:

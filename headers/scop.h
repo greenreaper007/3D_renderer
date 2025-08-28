@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 04:42:40 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/27 18:10:30 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/28 18:12:04 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 #define WINDOW_HEIGHT 750
 #define ZOOM 0.1f
 
+#define FPS 60
 #define SECOND 1000000
 
 /* Error code Data */
@@ -48,6 +49,13 @@ typedef struct s_key_state
 	char is_rightarrow;
 	char is_zoomin;
 	char is_zoomout;
+
+	char is_angleyup;
+	char is_angleydown;
+	char is_anglexup;
+	char is_anglexdown;
+	char is_anglezup;
+	char is_anglezdown;
 	
 } t_key_state;
 
@@ -82,6 +90,7 @@ typedef struct s_render
 	GLFWwindow* window;
 	int			glfw;
 	float		scale;
+	t_vertex	angle;
 	long		time_before_frame;
 	long		time_after_frame;
 	int			frame_count;

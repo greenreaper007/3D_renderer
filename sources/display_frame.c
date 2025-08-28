@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 09:08:54 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/27 17:39:29 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:56:48 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ void draw_face(t_face *face, float z)
 
 void display_render(t_render *render)
 {
+	glPushMatrix();
+
+	glRotatef(render->angle.x, 1.0f, 0.0f, 0.0f);
+	glRotatef(render->angle.y, 0.0f, 1.0f, 0.0f);
+	glRotatef(render->angle.z, 0.0f, 0.0f, 1.0f);
+	
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	int i = 0;
@@ -51,20 +57,24 @@ void display_render(t_render *render)
 	}
 
 	glFlush();
+	
+	glPopMatrix();
 }
 
 void display_frame(t_render *render)
 {
 	while (!glfwWindowShouldClose(render->window))
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
-		render->time_before_frame = get_time();
-		display_render(render);
-		glfwSwapBuffers(render->window);
-		render->time_after_frame = get_time();
-		glfwPollEvents();
-		do_keyboard_input(render);
-		render->frame_count++;
-		printf("Frame %d took %ld\n", render->frame_count, render->time_after_frame - render->time_before_frame);
+		if (get_time() >= render->time_after_frame + (SECOND / FPS))
+		{
+			render->time_before_frame = get_time();
+			display_render(render);
+			glfwSwapBuffers(render->window);
+			render->time_after_frame = get_time();
+			glfwPollEvents();
+			do_keyboard_input(render);
+			render->frame_count++;
+			printf("Frame %d took %ld\n", render->frame_count, render->time_after_frame - render->time_before_frame);
+		}
 	}
 }
