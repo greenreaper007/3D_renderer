@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 09:08:54 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/28 17:56:48 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/31 20:39:51 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void display_frame(t_render *render)
 			glfwPollEvents();
 			do_keyboard_input(render);
 			render->frame_count++;
-			printf("Frame %d took %ld\n", render->frame_count, render->time_after_frame - render->time_before_frame);
+			//printf("Frame %d took %ld\n", render->frame_count, render->time_after_frame - render->time_before_frame);
 		}
 	}
 }

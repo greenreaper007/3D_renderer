@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 04:42:54 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/27 09:28:27 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/08/31 20:42:26 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ int main(int argc, char **argv)
 	parse_object(render, argv[1]);
 	//print_data(render);
 	create_window(render);
+	/*int test = 0;
+	glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &test);
+	printf("%d\n", test);*/
 	display_frame(render);
 	
+
 	end_program(SUCCESS, "Main function finished", render);
 }
