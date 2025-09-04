@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 09:08:54 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/31 20:39:51 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/09/04 18:02:42 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void display_render(t_render *render)
 {
 	glPushMatrix();
 
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 	glRotatef(render->angle.x, 1.0f, 0.0f, 0.0f);
 	glRotatef(render->angle.y, 0.0f, 1.0f, 0.0f);
 	glRotatef(render->angle.z, 0.0f, 0.0f, 1.0f);
@@ -74,6 +76,7 @@ void display_frame(t_render *render)
 			glfwPollEvents();
 			do_keyboard_input(render);
 			render->frame_count++;
+			printf("%f\n", render->object.vertex[1].x);
 			//printf("Frame %d took %ld\n", render->frame_count, render->time_after_frame - render->time_before_frame);
 		}
 	}

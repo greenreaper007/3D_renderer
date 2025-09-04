@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 08:30:10 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/28 18:17:12 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:42:34 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ void keyboard_input(GLFWwindow* window, int key, int scancode, int action, int m
 			return ;
 		case GLFW_KEY_KP_9:
 			render->key.is_anglezdown = !render->key.is_anglezdown;
+			return ;
+		case GLFW_KEY_R:
+			render->angle.x = 0;
+			render->angle.y = 0;
+			render->angle.z = 0;
 			return ;
 		
 		default:

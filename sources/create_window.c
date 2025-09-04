@@ -6,7 +6,7 @@
 /*   By: flturbou <flturbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 08:09:43 by flturbou          #+#    #+#             */
-/*   Updated: 2025/08/28 18:34:04 by flturbou         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:34:53 by flturbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void create_window(t_render *render)
 	glfwSetKeyCallback(render->window, keyboard_input);
 	glfwSetWindowUserPointer(render->window, render);
 	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	glCullFace(GL_FRONT_FACE);
 	//glEnable(GL_DEPTH_TEST);
 	//glDepthFunc(GL_LESS);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
